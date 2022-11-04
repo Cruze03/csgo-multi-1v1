@@ -112,6 +112,11 @@ public int GetWeaponTeam(const char[] weapon) {
  */
 public void UpdatePreferencesOnCookies(int client) {
   for (int i = 0; i < g_numRoundTypes; i++) {
+    if(!g_RoundTypeOptional[i])
+	{
+		g_AllowedRoundTypes[client][i] = true;
+		continue;
+	}
     g_AllowedRoundTypes[client][i] = GetCookieBool(client, g_AllowedRoundTypeCookies[i]);
   }
 
